@@ -1,0 +1,469 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body { 
+  font: 14px helvetica neue, helvetica, arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#graph {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 24rem;
+}
+
+#graph-title {
+  top: 0;
+  left: 0;
+  right: 24rem;
+  background-color: rgba(255,255,255,0.5);
+}
+
+#history-back ,
+#unselect-all ,
+#history-forward ,
+#search ,
+#save-network ,
+#snapshot ,
+#legend {
+	top: 1vw;
+}
+
+/*
+#unselect-all ,
+#search ,
+#save-network ,
+#snapshot {
+	font-size: 2vw;
+}
+*/
+
+#search ,
+#legend {
+	border-width: 0;
+}
+
+#save-network > i ,
+#snapshot > i , 
+#legend > i {
+	display: contents;
+}
+
+#history-back {
+  left: 1vw;
+}
+
+#unselect-all {
+  left: 5vw;
+}
+
+#history-forward {
+  left: 9vw;
+}
+
+#search {
+  left: 13vw;
+}
+
+#save-network {
+  right: calc(9vw + 24rem);
+}
+
+#snapshot {
+  right: calc(5vw + 24rem);
+}
+
+#legend {
+  right: calc(1vw + 24rem);
+}
+
+
+/*
+.legend-container {
+	max-width: 25%;
+}
+*/
+.legend-container {
+	font-size: 1.5rem;
+}
+
+.legend {
+	display: flex;
+	flex-wrap: wrap;
+	/* overflow: auto; */
+	align-items: baseline;
+	text-align: left;
+}
+
+.legend.two-column > div {
+	width: 50%;
+	box-sizing: border-box;
+	display: flex;
+}
+
+.cmui , .cmui-inline {
+	text-align: center;
+	color: #555;
+	font-size: 2vw;
+	/* box-sizing: border-box; */
+	transition-property: opacity;
+	transition-duration: 250ms;
+	transition-timing-function: ease-out;
+	z-index: 1;
+}
+
+.cmui {
+	position: fixed;
+}
+
+.cmui-inline {
+	font-size: 2vw;
+}
+
+.cmui.button , .cmui-inline.button {
+	border-radius: 10%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #555;
+	font-size: 2vw;
+	width: 3vw;
+	height: 3vw;
+	display: block;
+	padding: 0;
+}
+
+.cmui.button > i , .cmui-inline.button > i {
+	vertical-align: middle;
+	display: inherit;
+}
+
+.cmui-inline.button > i {
+	display: contents;
+}
+
+.config {
+  position: absolute;
+  box-sizing: border-box;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
+  overflow: auto;
+  z-index: 1;
+}
+
+.config-panel {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 24rem;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 1em;
+  color: #fff;
+}
+
+.param {
+  margin-bottom: 1em;
+}
+
+.preamble {
+  margin-bottom: 2em;
+}
+
+p {
+  margin: 0.5em 0;
+  font-size: 0.8em;
+}
+
+/*
+.param button {
+  width: 3em;
+  margin-right: 0.25em;
+}
+*/
+
+a,
+a:hover {
+  color: #62daea;
+}
+
+.item a {
+	cursor: copy;
+}
+
+.label {
+  display: inline-block;
+}
+
+.slider {
+  display: block;
+}
+
+.config-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1em;
+  margin: 0.2em;
+  cursor: pointer;
+  color: #888;
+  z-index: 9999999;
+}
+
+.config-closed .config ,
+.config-closed .cmui {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.config-closed #graph {
+  right: 0;
+}
+
+.mini-title {
+	white-space: normal;
+}
+
+.mini-title .label {
+	font-size: 0.9em;
+}
+
+.logo {
+	float: left;
+	clear: left;
+}
+
+.logo img {
+	margin-right: 0.6em;
+}
+
+.agenttip-view {
+	width: 100%;
+	font-size: 1rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: white;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+.scrollblock {
+	overflow: auto;
+	max-height: 10rem;
+	width:100%;
+	white-space: pre-line;
+	font-size: 1rem;
+}
+
+.tippy-popper[data-html] {
+	max-width: 25%;
+}
+
+.tippy-content {
+	text-align: center;
+	font-size: 10px;
+}
+
+.tippy-content .scrollblock {
+	display: none;
+}
+
+.tippy-content .agenttip-hide {
+	display: none;
+}
+
+.updown {
+	display: flex;
+}
+
+.updown > div {
+	width: 50%;
+	flex: 1 1 auto;
+}
+
+.tippy-content .updown {
+	display: inline;
+}
+
+.tippy-content .updown > div {
+	display: inline;
+}
+
+/*
+ *	Vertical centering obtained from
+ * 
+ * 	https://codepen.io/dimbslmh/full/mKfCc
+ */
+.modal {
+  text-align: center;
+  padding: 0 !important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/*
+ * Inspired in https://github.com/cytoscape/cytoscape.js/tree/master/documentation/demos/tokyo-railways
+ * and https://codepen.io/dimbslmh/full/mKfCc
+ */
+
+.loading {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 4em;
+  background-color: rgba(224,224,224,0.5);
+}
+
+.loading:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.loading.loaded , .loading.loaded:before {
+  display: none;
+}
+
+/*
+ * Based on typeahead.js examples
+ */
+
+/*
+.typeahead,
+.tt-query,
+.tt-hint {
+  width: 396px;
+  height: 30px;
+  padding: 8px 12px;
+  font-size: 24px;
+  line-height: 30px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  outline: none;
+}
+
+.typeahead {
+  background-color: #fff;
+}
+
+.typeahead:focus {
+  border: 2px solid #0097cf;
+}
+
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  color: #999
+}
+
+.tt-menu {
+  width: 422px;
+  margin: 12px 0;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+*/
+
+.search-container .form-control {
+	padding-top: 0;
+	padding-bottom: 0;
+	height: 2vw;
+	font-size: 1.25vw;
+	line-height: 1.5vw;
+}
+
+.search-container .dropdown-menu {
+	font-size: 1.25vw;
+	line-height: 1.5vw;
+	width:100%;
+}
+
+.term-unavailable {
+	color: #888;
+	font-style: italic;
+}
+
+.tt-suggestion {
+  padding-left: 1em;
+  font-size: 1.25vw;
+  line-height: 1.5vw;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+@media (max-width: 600px){
+  #graph {
+    right: 0;
+  }
+}
